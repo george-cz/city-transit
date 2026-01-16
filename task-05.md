@@ -1,6 +1,6 @@
 # Task 05: Features & About Sections
 
-**Status**: [ ] NOT STARTED
+**Status**: [✓ COMPLETED]
 
 **Dependencies**: Task 02
 
