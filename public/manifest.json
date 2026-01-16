@@ -2,7 +2,7 @@
   "name": "CityTransit - Public Transport Guide",
   "short_name": "CityTransit",
   "description": "Find your way around any city with ease using public transport information",
-  "start_url": "/",
+  "start_url": "/city-transit/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#d97706",
