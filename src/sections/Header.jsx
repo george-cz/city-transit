@@ -1,5 +1,6 @@
 import { Bus } from 'lucide-react';
 import ThemeToggle from '../components/ThemeToggle';
+import LanguageToggle from '../components/LanguageToggle';
 
 export default function Header() {
   const scrollToTop = (e) => {
@@ -21,8 +22,9 @@ export default function Header() {
             <span>CityTransit</span>
           </a>
 
-          {/* Theme Toggle */}
-          <div className="flex items-center">
+          {/* Language and Theme Toggle */}
+          <div className="flex items-center gap-3">
+            <LanguageToggle />
             <ThemeToggle />
           </div>
         </div>

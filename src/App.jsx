@@ -4,16 +4,20 @@ import Header from './sections/Header';
 import Footer from './sections/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
+import { useTranslation } from './translations';
 import TransportApps from './components/TransportApps';
 import TicketingInfo from './components/TicketingInfo';
 import TravelTips from './components/TravelTips';
 import EmergencyInfo from './components/EmergencyInfo';
 
-function App() {
+function AppContent() {
   const [city, setCity] = useState('');
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const { language } = useLanguage();
+  const t = useTranslation(language);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -24,10 +28,10 @@ function App() {
 
     try {
       const apiUrl = import.meta.env.VITE_API_URL;
-      const response = await fetch(`${apiUrl}?city=${encodeURIComponent(city)}`);
+      const response = await fetch(`${apiUrl}?city=${encodeURIComponent(city)}&lang=${language}`);
 
       if (!response.ok) {
-        throw new Error('City not found or service unavailable');
+        throw new Error(t.errorCityNotFound);
       }
 
       const result = await response.json();
@@ -42,7 +46,7 @@ function App() {
 
   const handleUseLocation = () => {
     if (!navigator.geolocation) {
-      setError('Geolocation is not supported by your browser');
+      setError(t.errorGeolocation);
       return;
     }
 
@@ -56,11 +60,11 @@ function App() {
           const apiUrl = import.meta.env.VITE_API_URL;
 
           const response = await fetch(
-            `${apiUrl}?lat=${latitude}&lng=${longitude}`
+            `${apiUrl}?lat=${latitude}&lng=${longitude}&lang=${language}`
           );
 
           if (!response.ok) {
-            throw new Error('Location not found or service unavailable');
+            throw new Error(t.errorCityNotFound);
           }
 
           const result = await response.json();
@@ -74,78 +78,77 @@ function App() {
         }
       },
       (err) => {
-        setError('Unable to retrieve your location');
+        setError(t.errorLocation);
         setLoading(false);
       }
     );
   };
 
   return (
-    <ThemeProvider>
-      <div className="App min-h-screen bg-gray-50 dark:bg-gray-900">
-        <Header />
+    <div className="App min-h-screen bg-gray-50 dark:bg-gray-900">
+      <Header />
 
-        {/* Hero/Search Section */}
-        <section id="home" className="pt-32 pb-16 px-4">
-          <div className="container mx-auto max-w-4xl">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                Public Transport Guide
-              </h1>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                Find your way around any city with ease
-              </p>
-            </div>
+      {/* Hero/Search Section */}
+      <section id="home" className="pt-32 pb-16 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              {t.title}
+            </h1>
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              {t.subtitle}
+            </p>
+          </div>
 
-            {/* Search Form */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
-              <form onSubmit={handleSearch} className="space-y-4">
-                <div className="flex flex-col md:flex-row gap-4">
-                  <div className="flex-1 relative">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                    <input
-                      type="text"
-                      value={city}
-                      onChange={(e) => setCity(e.target.value)}
-                      placeholder="Enter city name..."
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-                      disabled={loading}
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    disabled={loading || !city.trim()}
-                    className="px-6 py-3 bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                  >
-                    {loading ? (
-                      <>
-                        <Loader2 className="animate-spin" size={20} />
-                        Searching...
-                      </>
-                    ) : (
-                      'Search'
-                    )}
-                  </button>
+          {/* Search Form */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
+            <form onSubmit={handleSearch} className="space-y-4">
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex-1 relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                  <input
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    placeholder={t.searchPlaceholder}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                    disabled={loading}
+                  />
                 </div>
-
-                <div className="flex items-center justify-center">
-                  <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-                    <div className="h-px bg-gray-300 dark:bg-gray-600 w-12"></div>
-                    <span className="text-sm">or</span>
-                    <div className="h-px bg-gray-300 dark:bg-gray-600 w-12"></div>
-                  </div>
-                </div>
-
                 <button
-                  type="button"
-                  onClick={handleUseLocation}
-                  disabled={loading}
-                  className="w-full px-6 py-3 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-medium rounded-lg border-2 border-gray-300 dark:border-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  type="submit"
+                  disabled={loading || !city.trim()}
+                  className="px-6 py-3 bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  <MapPin size={20} />
-                  Use My Location
+                  {loading ? (
+                    <>
+                      <Loader2 className="animate-spin" size={20} />
+                      {t.searching}
+                    </>
+                  ) : (
+                    t.searchButton
+                  )}
                 </button>
-              </form>
+              </div>
+
+              <div className="flex items-center justify-center">
+                <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                  <div className="h-px bg-gray-300 dark:bg-gray-600 w-12"></div>
+                  <span className="text-sm">{t.or}</span>
+                  <div className="h-px bg-gray-300 dark:bg-gray-600 w-12"></div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={handleUseLocation}
+                disabled={loading}
+                className="w-full px-6 py-3 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-medium rounded-lg border-2 border-gray-300 dark:border-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                <MapPin size={20} />
+                {t.useLocation}
+              </button>
+            </form>
 
               {error && (
                 <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
@@ -161,9 +164,9 @@ function App() {
                 <div className="bg-gradient-to-r from-amber-600 to-amber-700 dark:from-amber-700 dark:to-amber-800 rounded-lg shadow-lg p-8 text-white">
                   <h2 className="text-3xl font-bold mb-2">{data.city}</h2>
                   <div className="flex flex-wrap gap-4 text-amber-100">
-                    <span>Currency: {data.currency}</span>
+                    <span>{t.currency}: {data.currency}</span>
                     <span>•</span>
-                    <span>Transport: {data.primaryTransportModes?.join(', ')}</span>
+                    <span>{t.transport}: {data.primaryTransportModes?.join(', ')}</span>
                   </div>
                 </div>
 
@@ -191,9 +194,18 @@ function App() {
           </div>
         </section>
 
-        <Footer />
-        <ScrollToTop />
-      </div>
+      <Footer />
+      <ScrollToTop />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <LanguageProvider>
+        <AppContent />
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

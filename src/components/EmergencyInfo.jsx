@@ -1,10 +1,15 @@
 import { Phone, Globe } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslation } from '../translations';
 
 export default function EmergencyInfo({ info }) {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
+
   return (
     <div className="bg-red-50 dark:bg-red-900/10 border-2 border-red-200 dark:border-red-800 rounded-lg p-6">
       <h3 className="text-2xl font-bold text-red-900 dark:text-red-400 mb-4">
-        Emergency Contact
+        {t.emergencyContact}
       </h3>
 
       <div className="space-y-3">
@@ -13,7 +18,7 @@ export default function EmergencyInfo({ info }) {
             <Phone className="text-red-600 dark:text-red-400" size={20} />
             <div>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Transport Hotline
+                {t.transportHotline}
               </p>
               <a
                 href={`tel:${info.transportHotline}`}
@@ -30,7 +35,7 @@ export default function EmergencyInfo({ info }) {
             <Globe className="text-red-600 dark:text-red-400" size={20} />
             <div>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Official Website
+                {t.officialWebsite}
               </p>
               <a
                 href={info.website}

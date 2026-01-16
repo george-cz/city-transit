@@ -1,11 +1,16 @@
 import { Ticket, MapPin, DollarSign } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslation } from '../translations';
 
 export default function TicketingInfo({ info }) {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
       <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
         <Ticket className="text-amber-600 dark:text-amber-400" />
-        Ticketing Information
+        {t.ticketingInfo}
       </h3>
 
       <div className="grid md:grid-cols-2 gap-6">
@@ -14,7 +19,7 @@ export default function TicketingInfo({ info }) {
           <div>
             <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
               <Ticket size={18} className="text-amber-600 dark:text-amber-400" />
-              Ticket Types
+              {t.ticketTypes}
             </h4>
             <ul className="space-y-2">
               {info.types.map((type, index) => (
@@ -35,7 +40,7 @@ export default function TicketingInfo({ info }) {
           <div>
             <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
               <MapPin size={18} className="text-amber-600 dark:text-amber-400" />
-              Where to Buy
+              {t.whereToBuy}
             </h4>
             <ul className="space-y-2">
               {info.purchaseLocations.map((location, index) => (
@@ -57,13 +62,13 @@ export default function TicketingInfo({ info }) {
         <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
           <h4 className="font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <DollarSign size={18} className="text-amber-600 dark:text-amber-400" />
-            Typical Costs
+            {t.typicalCosts}
           </h4>
           <div className="grid sm:grid-cols-3 gap-4">
             {info.tipicalCosts.singleRide && (
               <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4">
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
-                  Single Ride
+                  {t.singleRide}
                 </p>
                 <p className="text-lg font-semibold text-gray-900 dark:text-white">
                   {info.tipicalCosts.singleRide}
@@ -73,7 +78,7 @@ export default function TicketingInfo({ info }) {
             {info.tipicalCosts.dayPass && (
               <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4">
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
-                  Day Pass
+                  {t.dayPass}
                 </p>
                 <p className="text-lg font-semibold text-gray-900 dark:text-white">
                   {info.tipicalCosts.dayPass}
@@ -83,7 +88,7 @@ export default function TicketingInfo({ info }) {
             {info.tipicalCosts.weeklyPass && (
               <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4">
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
-                  Weekly Pass
+                  {t.weeklyPass}
                 </p>
                 <p className="text-lg font-semibold text-gray-900 dark:text-white">
                   {info.tipicalCosts.weeklyPass}

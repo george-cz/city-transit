@@ -1,11 +1,16 @@
 import { Smartphone, CheckCircle, ExternalLink } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslation } from '../translations';
 
 export default function TransportApps({ apps }) {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
       <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
         <Smartphone className="text-amber-600 dark:text-amber-400" />
-        Transport Apps
+        {t.transportApps}
       </h3>
 
       <div className="space-y-6">
@@ -21,7 +26,7 @@ export default function TransportApps({ apps }) {
                   {app.isOfficial && (
                     <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium rounded-full">
                       <CheckCircle size={14} />
-                      Official
+                      {t.official}
                     </span>
                   )}
                 </h4>
@@ -34,7 +39,7 @@ export default function TransportApps({ apps }) {
             {app.features && app.features.length > 0 && (
               <div className="mb-4">
                 <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Features:
+                  {t.features}:
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {app.features.map((feature, i) => (

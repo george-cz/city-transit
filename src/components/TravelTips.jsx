@@ -1,11 +1,16 @@
 import { Lightbulb } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslation } from '../translations';
 
 export default function TravelTips({ tips }) {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
       <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
         <Lightbulb className="text-amber-600 dark:text-amber-400" />
-        Travel Tips
+        {t.travelTips}
       </h3>
 
       <div className="grid md:grid-cols-2 gap-4">
