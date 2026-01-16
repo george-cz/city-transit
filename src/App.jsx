@@ -3,6 +3,7 @@ import Hero from './sections/Hero';
 import Features from './sections/Features';
 import About from './sections/About';
 import Footer from './sections/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Features />
       <About />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
