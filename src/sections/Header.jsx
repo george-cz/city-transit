@@ -1,24 +1,10 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Bus } from 'lucide-react';
 import ThemeToggle from '../components/ThemeToggle';
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Topics', href: '#features' },
-    { name: 'About the Book', href: '#about' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
-  const scrollToSection = (e, href) => {
+  const scrollToTop = (e) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -28,55 +14,18 @@ export default function Header() {
           {/* Logo */}
           <a
             href="#home"
-            onClick={(e) => scrollToSection(e, '#home')}
-            className="text-2xl font-bold text-amber-900 dark:text-amber-400"
+            onClick={scrollToTop}
+            className="text-2xl font-bold text-amber-900 dark:text-amber-400 flex items-center gap-2"
           >
-            The Intricacies of Coffee
+            <Bus size={28} />
+            <span>CityTransit</span>
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="text-gray-700 dark:text-gray-300 hover:text-amber-800 dark:hover:text-amber-300 transition-colors duration-200 font-medium"
-              >
-                {link.name}
-              </a>
-            ))}
+          {/* Theme Toggle */}
+          <div className="flex items-center">
             <ThemeToggle />
-          </nav>
-
-          {/* Mobile Menu Button and Theme Toggle */}
-          <div className="md:hidden flex items-center gap-2">
-            <ThemeToggle />
-            <button
-              className="text-gray-700 dark:text-gray-300 hover:text-amber-800 dark:hover:text-amber-300 transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-200 dark:border-gray-800">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="block py-2 text-gray-700 dark:text-gray-300 hover:text-amber-800 dark:hover:text-amber-300 transition-colors duration-200 font-medium"
-              >
-                {link.name}
-              </a>
-            ))}
-          </nav>
-        )}
       </div>
     </header>
   );

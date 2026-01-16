@@ -5,7 +5,7 @@ const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     // Check localStorage first
-    const savedTheme = localStorage.getItem('coffee-book-theme');
+    const savedTheme = localStorage.getItem('citytransit-theme');
     if (savedTheme) {
       return savedTheme;
     }
@@ -28,7 +28,7 @@ export function ThemeProvider({ children }) {
     }
 
     // Save to localStorage
-    localStorage.setItem('coffee-book-theme', theme);
+    localStorage.setItem('citytransit-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

@@ -29,7 +29,7 @@ body {
   }
 }
 
-/* Selection color - Coffee theme */
+/* Selection color */
 ::selection {
   background-color: rgb(215 179 150);
   color: rgb(59 33 21);
@@ -40,7 +40,7 @@ body {
   color: rgb(251 191 36);
 }
 
-/* Focus visible for accessibility - Coffee theme */
+/* Focus visible for accessibility */
 *:focus-visible {
   outline: 2px solid rgb(120 74 50);
   outline-offset: 2px;
