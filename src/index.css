@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 html {
   scroll-behavior: smooth;
 }
@@ -33,8 +35,18 @@ body {
   color: rgb(59 33 21);
 }
 
+.dark ::selection {
+  background-color: rgb(120 74 50);
+  color: rgb(251 191 36);
+}
+
 /* Focus visible for accessibility - Coffee theme */
 *:focus-visible {
   outline: 2px solid rgb(120 74 50);
+  outline-offset: 2px;
+}
+
+.dark *:focus-visible {
+  outline: 2px solid rgb(251 191 36);
   outline-offset: 2px;
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import ThemeToggle from '../components/ThemeToggle';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,14 +22,14 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+    <header className="fixed top-0 w-full z-50 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a
             href="#home"
             onClick={(e) => scrollToSection(e, '#home')}
-            className="text-2xl font-bold text-amber-900"
+            className="text-2xl font-bold text-amber-900 dark:text-amber-400"
           >
             The Intricacies of Coffee
           </a>
@@ -40,32 +41,36 @@ export default function Header() {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className="text-gray-700 hover:text-amber-800 transition-colors duration-200 font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-amber-800 dark:hover:text-amber-300 transition-colors duration-200 font-medium"
               >
                 {link.name}
               </a>
             ))}
+            <ThemeToggle />
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-gray-700 hover:text-amber-800 transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile Menu Button and Theme Toggle */}
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="text-gray-700 dark:text-gray-300 hover:text-amber-800 dark:hover:text-amber-300 transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-200">
+          <nav className="md:hidden py-4 border-t border-gray-200 dark:border-gray-800">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className="block py-2 text-gray-700 hover:text-amber-800 transition-colors duration-200 font-medium"
+                className="block py-2 text-gray-700 dark:text-gray-300 hover:text-amber-800 dark:hover:text-amber-300 transition-colors duration-200 font-medium"
               >
                 {link.name}
               </a>

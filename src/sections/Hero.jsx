@@ -23,7 +23,7 @@ export default function Hero() {
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <div className="inline-block mb-6">
-            <span className="bg-white/90 text-amber-900 px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+            <span className="bg-white/90 dark:bg-gray-800/90 text-amber-900 dark:text-amber-400 px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
               ☕ A Journey Through Coffee Mastery
             </span>
           </div>
@@ -43,11 +43,11 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="group bg-white hover:bg-amber-50 text-amber-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-2 shadow-2xl hover:shadow-3xl hover:scale-105 transform">
+            <button className="group bg-white dark:bg-gray-900 hover:bg-amber-50 dark:hover:bg-gray-800 text-amber-900 dark:text-amber-400 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-2 shadow-2xl hover:shadow-3xl hover:scale-105 transform">
               Order the Book
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
             </button>
-            <button className="group bg-amber-900/80 hover:bg-amber-800 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-2 border-2 border-white/30 backdrop-blur-sm shadow-2xl hover:scale-105 transform">
+            <button className="group bg-amber-900/80 dark:bg-amber-700/80 hover:bg-amber-800 dark:hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-2 border-2 border-white/30 backdrop-blur-sm shadow-2xl hover:scale-105 transform">
               <PlayCircle size={20} />
               Preview Chapters
             </button>

@@ -4,17 +4,20 @@ import Features from './sections/Features';
 import About from './sections/About';
 import Footer from './sections/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Hero />
-      <Features />
-      <About />
-      <Footer />
-      <ScrollToTop />
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        <Header />
+        <Hero />
+        <Features />
+        <About />
+        <Footer />
+        <ScrollToTop />
+      </div>
+    </ThemeProvider>
   );
 }
 
