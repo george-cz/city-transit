@@ -4,56 +4,68 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 pt-16"
+      className="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden"
+      style={{
+        backgroundImage: 'url(https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=2661&auto=format&fit=crop)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
     >
-      <div className="container mx-auto px-4 py-20">
+      {/* Gradient overlay - darker in center, lighter at edges */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.2) 100%)'
+        }}
+      ></div>
+      <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <div className="inline-block mb-6">
-            <span className="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold">
-              ✨ Welcome to ModernSite
+            <span className="bg-white/90 text-amber-900 px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+              ☕ A Journey Through Coffee Mastery
             </span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-            Build Something
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
-              {" "}Amazing{" "}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
+            The Intricacies of
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-orange-200">
+              {" "}Coffee{" "}
             </span>
-            Today
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <p className="text-xl md:text-2xl text-white/95 mb-10 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
+            Discover the art and science behind brewing the perfect cup. From bean selection to extraction methods, explore every variable that transforms coffee into an exceptional experience.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="group bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl">
-              Get Started
+            <button className="group bg-white hover:bg-amber-50 text-amber-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-2 shadow-2xl hover:shadow-3xl hover:scale-105 transform">
+              Order the Book
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
             </button>
-            <button className="group bg-white hover:bg-gray-50 text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-2 border-2 border-gray-200">
+            <button className="group bg-amber-900/80 hover:bg-amber-800 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-2 border-2 border-white/30 backdrop-blur-sm shadow-2xl hover:scale-105 transform">
               <PlayCircle size={20} />
-              Watch Demo
+              Preview Chapters
             </button>
           </div>
 
           {/* Stats or Social Proof */}
           <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-indigo-600 mb-2">10K+</div>
-              <div className="text-gray-600 text-sm md:text-base">Happy Users</div>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">12</div>
+              <div className="text-white/90 text-sm md:text-base">Chapters</div>
             </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-indigo-600 mb-2">50+</div>
-              <div className="text-gray-600 text-sm md:text-base">Countries</div>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">100+</div>
+              <div className="text-white/90 text-sm md:text-base">Brewing Techniques</div>
             </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-indigo-600 mb-2">99%</div>
-              <div className="text-gray-600 text-sm md:text-base">Satisfaction</div>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">30+</div>
+              <div className="text-white/90 text-sm md:text-base">Coffee Origins</div>
             </div>
           </div>
         </div>

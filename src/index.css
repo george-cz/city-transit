@@ -27,14 +27,14 @@ body {
   }
 }
 
-/* Selection color */
+/* Selection color - Coffee theme */
 ::selection {
-  background-color: rgb(199 210 254);
-  color: rgb(49 46 129);
+  background-color: rgb(215 179 150);
+  color: rgb(59 33 21);
 }
 
-/* Focus visible for accessibility */
+/* Focus visible for accessibility - Coffee theme */
 *:focus-visible {
-  outline: 2px solid rgb(79 70 229);
+  outline: 2px solid rgb(120 74 50);
   outline-offset: 2px;
 }

@@ -5,22 +5,22 @@ export default function Footer() {
 
   const footerLinks = {
     product: [
-      { name: 'Features', href: '#features' },
-      { name: 'Pricing', href: '#' },
-      { name: 'Security', href: '#' },
-      { name: 'Updates', href: '#' }
+      { name: 'Topics Covered', href: '#features' },
+      { name: 'Sample Chapters', href: '#' },
+      { name: 'Purchase Book', href: '#' },
+      { name: 'E-Book Version', href: '#' }
     ],
     company: [
-      { name: 'About', href: '#about' },
-      { name: 'Blog', href: '#' },
-      { name: 'Careers', href: '#' },
-      { name: 'Press', href: '#' }
+      { name: 'About the Book', href: '#about' },
+      { name: 'Author Bio', href: '#' },
+      { name: 'Coffee Blog', href: '#' },
+      { name: 'Press Kit', href: '#' }
     ],
     support: [
-      { name: 'Help Center', href: '#' },
-      { name: 'Documentation', href: '#' },
-      { name: 'Contact Us', href: '#contact' },
-      { name: 'Status', href: '#' }
+      { name: 'FAQ', href: '#' },
+      { name: 'Brewing Resources', href: '#' },
+      { name: 'Contact', href: '#contact' },
+      { name: 'Wholesale Inquiries', href: '#' }
     ]
   };
 
@@ -39,37 +39,37 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-bold mb-4 text-indigo-400">ModernSite</h3>
+            <h3 className="text-2xl font-bold mb-4 text-amber-400">The Intricacies of Coffee</h3>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Your comprehensive guide to understanding and mastering every aspect of coffee brewing. From bean to cup, discover the variables that make the difference.
             </p>
 
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-gray-400">
                 <Mail size={18} />
-                <span>contact@modernsite.com</span>
+                <span>info@intricaciesofcoffee.com</span>
               </div>
               <div className="flex items-center gap-3 text-gray-400">
                 <Phone size={18} />
-                <span>+1 (555) 123-4567</span>
+                <span>+1 (555) COFFEE-1</span>
               </div>
               <div className="flex items-center gap-3 text-gray-400">
                 <MapPin size={18} />
-                <span>123 Main St, City, State 12345</span>
+                <span>Available worldwide</span>
               </div>
             </div>
           </div>
 
           {/* Product Links */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Product</h4>
+            <h4 className="font-semibold text-lg mb-4">The Book</h4>
             <ul className="space-y-2">
               {footerLinks.product.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-indigo-400 transition-colors duration-200"
+                    className="text-gray-400 hover:text-amber-400 transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -86,7 +86,7 @@ export default function Footer() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-indigo-400 transition-colors duration-200"
+                    className="text-gray-400 hover:text-amber-400 transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -103,7 +103,7 @@ export default function Footer() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-indigo-400 transition-colors duration-200"
+                    className="text-gray-400 hover:text-amber-400 transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -120,7 +120,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
             <p className="text-gray-400 text-sm">
-              © {currentYear} ModernSite. All rights reserved.
+              © {currentYear} The Intricacies of Coffee. All rights reserved.
             </p>
 
             {/* Social Links */}
@@ -130,7 +130,7 @@ export default function Footer() {
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 bg-gray-800 hover:bg-indigo-600 rounded-full flex items-center justify-center transition-colors duration-200"
+                  className="w-10 h-10 bg-gray-800 hover:bg-amber-700 rounded-full flex items-center justify-center transition-colors duration-200"
                 >
                   {social.icon}
                 </a>
@@ -139,10 +139,10 @@ export default function Footer() {
 
             {/* Legal Links */}
             <div className="flex gap-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-indigo-400 transition-colors duration-200">
+              <a href="#" className="text-gray-400 hover:text-amber-400 transition-colors duration-200">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-indigo-400 transition-colors duration-200">
+              <a href="#" className="text-gray-400 hover:text-amber-400 transition-colors duration-200">
                 Terms of Service
               </a>
             </div>

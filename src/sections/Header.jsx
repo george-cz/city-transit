@@ -6,8 +6,8 @@ export default function Header() {
 
   const navLinks = [
     { name: 'Home', href: '#home' },
-    { name: 'Features', href: '#features' },
-    { name: 'About', href: '#about' },
+    { name: 'Topics', href: '#features' },
+    { name: 'About the Book', href: '#about' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -28,9 +28,9 @@ export default function Header() {
           <a
             href="#home"
             onClick={(e) => scrollToSection(e, '#home')}
-            className="text-2xl font-bold text-indigo-600"
+            className="text-2xl font-bold text-amber-900"
           >
-            ModernSite
+            The Intricacies of Coffee
           </a>
 
           {/* Desktop Navigation */}
@@ -40,7 +40,7 @@ export default function Header() {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className="text-gray-700 hover:text-indigo-600 transition-colors duration-200 font-medium"
+                className="text-gray-700 hover:text-amber-800 transition-colors duration-200 font-medium"
               >
                 {link.name}
               </a>
@@ -49,7 +49,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-700 hover:text-indigo-600 transition-colors"
+            className="md:hidden text-gray-700 hover:text-amber-800 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -65,7 +65,7 @@ export default function Header() {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className="block py-2 text-gray-700 hover:text-indigo-600 transition-colors duration-200 font-medium"
+                className="block py-2 text-gray-700 hover:text-amber-800 transition-colors duration-200 font-medium"
               >
                 {link.name}
               </a>
